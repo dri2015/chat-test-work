@@ -15,8 +15,8 @@ use OpenApi\Attributes as OA;
     description: 'User resource',
     properties: [
         new OA\Property(property: 'id', type: 'integer', readOnly: true, example: 1),
-        new OA\Property(property: 'username', type: 'string', example: 'John', nullable: true),
-        new OA\Property(property: 'color', type: 'string', example: '#ffffff', nullable: true),
+        new OA\Property(property: 'username', type: 'string', example: 'john_doe', nullable: false),
+        new OA\Property(property: 'color', type: 'string', example: '#ffffff', nullable: false),
     ],
     additionalProperties: false,
 )]

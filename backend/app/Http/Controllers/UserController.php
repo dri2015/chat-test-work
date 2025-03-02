@@ -11,6 +11,33 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserController extends Controller
 {
+    /**
+     * @OA\Post(
+     *     path="/user",
+     *     summary="Create or retrieve a user",
+     *     description="Finds an existing user by username or creates a new one with a random color.",
+     *     tags={"User"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"username"},
+     *             @OA\Property(property="username", type="string", example="john_doe")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="User retrieved or created successfully",
+     *         @OA\JsonContent(ref="#/components/schemas/UserResource")
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Server error",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="error", type="string", example="ERROR_MAKE_USER")
+     *         )
+     *     )
+     * )
+     */
     public function user(UserRequest $request): JsonResource
     {
         try {

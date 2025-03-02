@@ -15,15 +15,18 @@ use OpenApi\Attributes as OA;
     description: 'Message resource',
     properties: [
         new OA\Property(property: 'id', type: 'integer', readOnly: true, example: 1),
-        new OA\Property(property: 'content', type: 'string', example: 'John', nullable: true),
+        new OA\Property(property: 'content', type: 'string', example: 'Hello World', nullable: true),
+        new OA\Property(property: 'created_at', type: 'string', format: 'date-time', example: '2025-03-03T12:00:00Z', nullable: true),
+        new OA\Property(property: 'user', ref: '#/components/schemas/UserResource', type: 'object', nullable: true),
     ],
     additionalProperties: false,
 )]
 #[OA\Response(
-	response: 'UserResource',
-	description: 'Success',
-	content: [new OA\JsonContent(properties:[new OA\Property(property: 'data', ref: '#/components/schemas/UserResource', type: 'object')])]
+    response: 'MessageResource',
+    description: 'Success',
+    content: [new OA\JsonContent(properties: [new OA\Property(property: 'data', ref: '#/components/schemas/MessageResource', type: 'object')])]
 )]
+
 
 class MessageResource extends JsonResource
 {
